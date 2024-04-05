@@ -5,6 +5,7 @@
     "fix": "biome check --apply-unsafe ."
   },
   "dependencies": {
+    "@auth/core": "^0.28.2",
     "@biomejs/biome": "^1.6.4",
     "hono": "^4.2.1"
   },

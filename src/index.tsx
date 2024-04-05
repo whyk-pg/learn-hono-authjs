@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { Layout } from "./components/layout";
+import { CALLBACK_URL, auth } from "./lib/auth";
 
 const app = new Hono();
 
@@ -17,6 +18,14 @@ app.get("/", (ctx) => {
       </form>
     </Layout>,
   );
+});
+
+app.get("/auth/discord", async (ctx) => {
+  return ctx.redirect(CALLBACK_URL);
+});
+
+app.get(CALLBACK_URL, async (ctx) => {
+  return await auth(ctx);
 });
 
 app.notFound((ctx) => {
